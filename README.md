@@ -1,8 +1,10 @@
-TODO:
+4TODO:
+
 	Invent a good way of pvp
 	Communication - voice chat?
 	
 Main game idea:
+
 	2D Pixel art
 	Side view
 	Underwater
@@ -13,6 +15,7 @@ Main game idea:
 	10,984 meters deep
 
 Concept 1 - get out of submarine:
+
 	Team vs Team:
 		2 Teams are divided in 2 parts of submarine
 		Each team tries to get out of the submarine TOGETHER!
@@ -32,6 +35,7 @@ Concept 1 - get out of submarine:
 		While scavenging and sovling minigames each team can disturb progress of the other team
 
 Concept 2 - underwater sea base:
+
 	Singleplayer:
 		You are a proud owner of submarine which is also your home
 		Inspire from (Barotrauma + Subnautica + Raft)
@@ -40,6 +44,7 @@ Concept 2 - underwater sea base:
 		Fight off monsters
 
 Inspiration: 
+
 	Dave the diver
 	Barotrauma
 	Subnautica
