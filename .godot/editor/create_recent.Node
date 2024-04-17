@@ -1,2 +1,5 @@
-Panel
+Control
+VBoxContainer
+Button
 Label
+Panel
