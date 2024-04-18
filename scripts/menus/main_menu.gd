@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-
+var test_scene = preload("res://scenes/test_level.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,4 +12,4 @@ func _process(delta):
 
 
 func _on_singleplayer_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(test_scene)

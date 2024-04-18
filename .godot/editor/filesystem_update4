@@ -1,3 +1,4 @@
-res://scenes/test_level.tscn
+res://menus/main_menu.tscn
 res://assets/fonts/title_label.tres
+res://scenes/test_level.tscn
 res://entities/player.tscn

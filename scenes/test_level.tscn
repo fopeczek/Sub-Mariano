@@ -7,9 +7,10 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(993, 1000)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(572, 546)
+[node name="Collision" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_0ob38")
 
 [node name="Player" parent="." instance=ExtResource("1_dabbd")]
+position = Vector2(995, 833)
