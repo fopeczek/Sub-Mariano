@@ -54,6 +54,17 @@ Concept 2 - underwater sea base:
       -great grapic and music
       -Things from concepts above I don't want to write, because I'm lazy.
 
+Concept 4 - RPG with horror elements
+
+  	Singleplayer:
+   		RPG inspired by Hollow Knight, where you dive into horrors beneath water.
+     	Features:
+      -Lovecraft inspirations
+      -intese experimence
+      -platformer
+      -great grapic and music
+      -Things from concepts above I don't want to write, because I'm lazy.
+
 Inspiration: 
 
 	Dave the diver
