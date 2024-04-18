@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Sub-mariano"
+run/main_scene="res://menus/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/textures/icon.svg"
 

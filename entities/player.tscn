@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4ulw7tgjircw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjs4h"]
+size = Vector2(42, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tvi7q"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(578, 259)
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gjs4h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tvi7q")
+animation = &"idle"

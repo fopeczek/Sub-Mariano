@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctqc7fu1v3in7"]
+[gd_scene load_steps=3 format=3 uid="uid://ctqc7fu1v3in7"]
 
 [ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://assets/fonts/title_label.tres" id="1_torgs"]
+[ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="2_it4td"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,7 +28,7 @@ text = "Sub Mariano"
 label_settings = ExtResource("1_torgs")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ButtonLayout" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,27 +42,30 @@ offset_bottom = 108.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
+script = ExtResource("2_it4td")
 
-[node name="HostGame" type="Button" parent="VBoxContainer"]
+[node name="Singleplayer" type="Button" parent="ButtonLayout"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Host Game"
+text = "Singleplayer"
 
-[node name="JoinGame" type="Button" parent="VBoxContainer"]
+[node name="Multiplayer" type="Button" parent="ButtonLayout"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Join Game"
+text = "Multiplayer"
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Options" type="Button" parent="ButtonLayout"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Options"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="ButtonLayout"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Exit"
+
+[connection signal="pressed" from="ButtonLayout/Singleplayer" to="ButtonLayout" method="_on_singleplayer_pressed"]
