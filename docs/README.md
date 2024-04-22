@@ -1,9 +1,4 @@
-TODO:
-
-	Invent a good way of pvp
-	Communication - voice chat?
-	
-Main game idea:
+# Main game idea:
 
 	2D Pixel art
 	Side view
@@ -14,7 +9,47 @@ Main game idea:
 	Oxygen and pressure
 	10,984 meters deep
 
-Concept 1 - get out of submarine:
+# Current main concept - RPG with horror elements
+
+RPG inspired by Hollow Knight, where you dive into horrors beneath water.
+
+- ### Lore:
+Rare minerals were recently found while digging in Mariana trench. Becouse of this discovery arms race started to get as mutch as possible of those minerals.
+Since it is so deep down you and you can't communicate becouse of radio signal distortion in water, big countries and unions started sending autonomous robots with
+digitalized human brains inside (in order to deal with moral and ethical issues human counterparts were killed, so it wasn't mind backup, more like mind transfer).
+You are one of those sentient robots, you have to collect minerals and survive, since one of biggest dangers are other robots that . The minerals caused deep underwater
+fauna to mutate. Those mutants don't like noise and are attracted by it. One of other dangers in the deep dark. In order to get the minerals from depths on surface
+there are ships with long elevator shafts running down to bottom. Elevators are quite away from mining sites, becouse mining sites are often attacked by mutants. 
+Most of other robots that you will encounter have been (maybe intentionally) damaged during mind transfer, as sutch they gone beserk. The less the robot is sentient the more
+killing them is acceptable. 
+> - TODO: Think of name of that mineral and what is it used for.
+- #### Game mechanics:
+1. Fighting:
+   - Mele - cool karate moves, mining drill attacks
+   - Ranged - harpoons, torpedos, emp weapons, lasers?
+3. Movement - you are very heavy, becouse you are a robot, hence you can swim, but it is very slow and inefficient. In order to improve your movement you can install boosters for jumping and dashing
+2. Modular body - every part of your body is replacable and upgradable, example of a modular loadout: 1 reactor socket, 2 arm and 2 leg sockets, 2 booster pack (for jumping and dashing) sockets
+4. Vision:
+   - normal: using light - very primitive since it is very dark in the deep
+   - vibration: using water vibrations - integrated science from underwater fauna and mutants
+   - advanced thermal: thermal vision - thanks to advanced technology of enchanced thermal vision ability to see infrared underwater (normally not quite possible)
+5. Starting game/mission:
+   - Starting inside elevator
+   - Dropped somewere around randomly form a drop pod (hard to steer? hence randomness of position)
+6. Procedurally generated map based on game year - Before starting capmain you have to chose which year do you want to start the game: early stage, middle stage and late stage.
+   Every stage determines if you have access to advanced or primitive grear, and is there large or small amount of infrastructure, and is there small or large amount of the mineral.
+7. Satnity level - despite your robotic body you still have your human brain, hence killing sentient robots that can be reasoned with is mentally heavy. 
+8. Cool hacking system (TODO)
+- ### Multiplayer lore:
+The rare mineral was found on other planets as well. Arms race continue, sending sentient robotic excavation groups to those planets. Goals can be the minerals itself but also
+sabotage missions to slow down the competition. 
+> Planets are going to be the servers/rooms
+> Teams (excavation groups) can be up to 4 players?
+- You can play coop PvE, team vs team, capture the base (CTF), deathmatch?
+- Since there is no more ... (!? I forgot what I wanted to type here)
+
+
+## Concept 1 - get out of submarine:
 
 	Team vs Team:
 		2 Teams are divided in 2 parts of submarine
@@ -34,7 +69,7 @@ Concept 1 - get out of submarine:
 			Hunter (DPS)
 		While scavenging and sovling minigames each team can disturb progress of the other team
 
-Concept 2 - underwater sea base:
+## Concept 2 - underwater sea base:
 
 	Singleplayer:
 		You are a proud owner of submarine which is also your home
@@ -43,21 +78,10 @@ Concept 2 - underwater sea base:
 		Repair submarine
 		Fight off monsters
 
-  Concept 3 - Rogue-like with horror elements
+##  Concept 3 - Rogue-like with horror elements
 
   	Singleplayer:
    		Rogue-like inspired by Spelunky, where you dive into horrors beneath water.
-     	Features:
-      -Lovecraft inspirations
-      -intese experimence
-      -platformer
-      -great grapic and music
-      -Things from concepts above I don't want to write, because I'm lazy.
-
-Concept 4 - RPG with horror elements
-
-  	Singleplayer:
-   		RPG inspired by Hollow Knight, where you dive into horrors beneath water.
      	Features:
       -Lovecraft inspirations
       -intese experimence
@@ -71,3 +95,8 @@ Inspiration:
 	Barotrauma
 	Subnautica
 	Among us
+
+TODO:
+
+	Invent a good way of pvp
+	Communication - voice chat?
