@@ -4,16 +4,11 @@
 	Side view
 	Underwater
 	Mariana Trench
-	Submarine
 	Multiplayer
-	Oxygen and pressure
 	10,984 meters deep
 
 # Current main concept - RPG with horror elements
-
-RPG inspired by Hollow Knight, where you dive into horrors beneath water.
-
-- ### Lore:
+- ### Game lore:
 Rare minerals were recently found while digging in Mariana trench. Becouse of this discovery arms race started to get as mutch as possible of those minerals.
 Since it is so deep down you and you can't communicate becouse of radio signal distortion in water, big countries and unions started sending autonomous robots with
 digitalized human brains inside (in order to deal with moral and ethical issues human counterparts were killed, so it wasn't mind backup, more like mind transfer).
@@ -26,14 +21,16 @@ killing them is acceptable.
 - #### Game mechanics:
 1. Fighting:
    - Mele - cool karate moves, mining drill attacks
-   - Ranged - harpoons, torpedos, emp weapons, lasers?
-3. Movement - you are very heavy, becouse you are a robot, hence you can swim, but it is very slow and inefficient. In order to improve your movement you can install boosters for jumping and dashing
-2. Modular body - every part of your body is replacable and upgradable, example of a modular loadout: 1 reactor socket, 2 arm and 2 leg sockets, 2 booster pack (for jumping and dashing) sockets
+   - Ranged - harpoons, torpedos, emp weapons, granades
+3. Movement - you are very heavy, becouse you are a robot, hence you can swim, but it is very slow and inefficient. In order to improve your movement you can install boosters for jumping and dashing. Grapling gun?
+2. Modular body/inventory - every part of your body is replacable and upgradable, example of a modular loadout: 1 reactor socket, 2 arm and 2 leg sockets, 2 booster pack (for jumping and dashing) sockets.
+   Parts that you attatch can be damaged and repaired.
 4. Vision:
    - normal: using light - very primitive since it is very dark in the deep
    - vibration: using water vibrations - integrated science from underwater fauna and mutants
-   - advanced thermal: thermal vision - thanks to advanced technology of enchanced thermal vision ability to see infrared underwater (normally not quite possible)
-5. Starting game/mission:
+     (potential quirky and special game mechanic, echo, blending with water waves, vibrating granades that distrupt mutants and this system)
+   - advanced thermal vision - thanks to advanced technology of enchanced thermal vision ability to see infrared underwater (normally not quite possible)
+5. Starting mission/spawining in game:
    - Starting inside elevator
    - Dropped somewere around randomly form a drop pod (hard to steer? hence randomness of position)
 6. Procedurally generated map based on game year - Before starting capmain you have to chose which year do you want to start the game: early stage, middle stage and late stage.
@@ -46,8 +43,19 @@ sabotage missions to slow down the competition.
 > Planets are going to be the servers/rooms
 > Teams (excavation groups) can be up to 4 players?
 - You can play coop PvE, team vs team, capture the base (CTF), deathmatch?
-- Since there is no more ... (!? I forgot what I wanted to type here)
+- Since in multiplayer there is no normal game campain proggresion every player starts with some minimum gear so everyone can chose their role eg. tank, scout...
 
+> - ##### Concept inspiration:
+>   - Barotrauma - enviroment, horror
+>   - SOMA - sentient robots, sanity level
+>   - Hollow Knight - platforming
+>   - Cogmind - robot modularity, hacking
+>   - Helldivers - mutant bugs, respawning, multiplayer
+>   - Deep Rock Galactic - mutant bugs, spawning system, multiplayer
+>   - Don't starve? - sanity level
+>   - Teeworlds - grapling gun
+
+---------------------------
 
 ## Concept 1 - get out of submarine:
 
@@ -89,14 +97,7 @@ sabotage missions to slow down the competition.
       -great grapic and music
       -Things from concepts above I don't want to write, because I'm lazy.
 
-Inspiration: 
-
-	Dave the diver
-	Barotrauma
-	Subnautica
-	Among us
 
 TODO:
 
-	Invent a good way of pvp
-	Communication - voice chat?
+ 	Communication - voice chat?
