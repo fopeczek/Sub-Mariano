@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctqc7fu1v3in7"]
 
-[ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://assets/fonts/title_label.tres" id="1_torgs"]
+[ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://assets/text/title_label.tres" id="1_torgs"]
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="2_it4td"]
 
 [node name="MainMenu" type="Control"]
@@ -68,3 +68,4 @@ size_flags_vertical = 4
 text = "Exit"
 
 [connection signal="pressed" from="ButtonLayout/Singleplayer" to="ButtonLayout" method="_on_singleplayer_pressed"]
+[connection signal="pressed" from="ButtonLayout/Exit" to="ButtonLayout" method="_on_exit_pressed"]

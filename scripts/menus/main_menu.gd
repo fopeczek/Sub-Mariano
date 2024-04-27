@@ -7,9 +7,13 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
 func _on_singleplayer_pressed():
 	get_tree().change_scene_to_packed(test_scene)
+
+
+func _on_exit_pressed():
+	get_tree().quit()

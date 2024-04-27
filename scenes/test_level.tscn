@@ -1,16 +1,125 @@
-[gd_scene load_steps=3 format=3 uid="uid://3f0if570fqch"]
+[gd_scene load_steps=14 format=3 uid="uid://3f0if570fqch"]
 
+[ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://assets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
 [ext_resource type="PackedScene" uid="uid://c4ulw7tgjircw" path="res://entities/player.tscn" id="1_dabbd"]
+[ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://assets/physics/floor_physics_material.tres" id="1_oi23q"]
+[ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="2_ogntn"]
+[ext_resource type="PackedScene" uid="uid://epmte2jm0mjj" path="res://entities/box.tscn" id="6_xk82c"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0ob38"]
+[sub_resource type="Environment" id="Environment_vwhch"]
+glow_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_t46ws"]
+script/source = "extends StaticBody2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+
+#func _on_area_2d_body_entered(body):
+	#if body.get_class() == \"CharacterBody2D\":
+		#body.floor_friction = physics_material_override.friction
+
+
+#func _on_area_2d_body_exited(body):
+	#if body.get_class() == \"CharacterBody2D\":
+		#if not body.is_on_floor():
+			#body.floor_friction = 0.0
+			#pass
+		#for i in body.get_slide_collision_count():
+			#var collision = body.get_slide_collision(i).get_collider()
+			#if collision.physics_material_override:
+				#body.floor_friction = collision.physics_material_override.friction
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjv5o"]
+size = Vector2(127.202, 130)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kf4uk"]
+cull_mode = 1
+polygon = PackedVector2Array(-63.1335, -55.3101, -63.1335, 60.8413, 64.3135, 55, 64.443, -70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nje4o"]
+size = Vector2(1974, 26)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k6nit"]
+cull_mode = 2
+polygon = PackedVector2Array(-985, -15, 981, -15, 983, 18, -988, 20)
+
+[sub_resource type="Gradient" id="Gradient_3q14w"]
+colors = PackedColorArray(0.985904, 0.985904, 0.985904, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g38pa"]
+gradient = SubResource("Gradient_3q14w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="TestLevel" type="Node2D"]
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vwhch")
+
+[node name="Backgound" type="Sprite2D" parent="."]
+modulate = Color(0.294118, 0.294118, 0.294118, 1)
+position = Vector2(1294, 757)
+scale = Vector2(4.17188, 4.17188)
+texture = ExtResource("2_ogntn")
+
+[node name="SlipperyFloor" type="StaticBody2D" parent="."]
+position = Vector2(1946, 1005)
+scale = Vector2(5.81308, 0.361598)
+physics_material_override = ExtResource("1_67o7e")
+script = SubResource("GDScript_t46ws")
+
+[node name="Sprite" type="Sprite2D" parent="SlipperyFloor"]
+texture = ExtResource("2_ogntn")
+
+[node name="Collision" type="CollisionShape2D" parent="SlipperyFloor"]
+scale = Vector2(1, 0.999999)
+shape = SubResource("RectangleShape2D_yjv5o")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="SlipperyFloor"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_kf4uk")
+
 [node name="Floor" type="StaticBody2D" parent="."]
-position = Vector2(993, 1000)
+position = Vector2(1175, 1009)
+physics_material_override = ExtResource("1_oi23q")
+script = SubResource("GDScript_t46ws")
+
+[node name="Sprite" type="Sprite2D" parent="Floor"]
+scale = Vector2(15.44, 0.2)
+texture = ExtResource("2_ogntn")
 
 [node name="Collision" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_0ob38")
+shape = SubResource("RectangleShape2D_nje4o")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Floor"]
+position = Vector2(0, -3)
+occluder = SubResource("OccluderPolygon2D_k6nit")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(1555, 634)
+scale = Vector2(16.6374, 16.6374)
+energy = 3.46
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 1.8
+texture = SubResource("GradientTexture2D_g38pa")
 
 [node name="Player" parent="." instance=ExtResource("1_dabbd")]
-position = Vector2(995, 833)
+position = Vector2(1145, 843)
+floor_constant_speed = true
+
+[node name="Box" parent="." instance=ExtResource("6_xk82c")]
+position = Vector2(1345, 404)

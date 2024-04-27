@@ -1,0 +1,4 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://be1nu4c6niu5g"]
+
+[resource]
+resource_name = "Floor"

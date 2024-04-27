@@ -1,0 +1,4 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://dkoi8xexwxbvo"]
+
+[resource]
+resource_name = "Box"

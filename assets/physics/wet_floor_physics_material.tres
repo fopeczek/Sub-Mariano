@@ -1,0 +1,5 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://ba6t0e13jclth"]
+
+[resource]
+resource_name = "Slippery floor"
+friction = 0.35
