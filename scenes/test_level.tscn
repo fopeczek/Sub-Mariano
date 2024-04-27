@@ -113,8 +113,6 @@ position = Vector2(1555, 634)
 scale = Vector2(16.6374, 16.6374)
 energy = 3.46
 shadow_enabled = true
-shadow_filter = 2
-shadow_filter_smooth = 1.8
 texture = SubResource("GradientTexture2D_g38pa")
 
 [node name="Player" parent="." instance=ExtResource("1_dabbd")]
