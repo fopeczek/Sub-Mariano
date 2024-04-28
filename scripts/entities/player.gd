@@ -1,76 +1,72 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-@export_category("Physics")
-@export_range(10.0, 100.0) var push_force: float = 50.0
+#@export_category("Physics")
+#@export_range(10.0, 100.0) var push_force: float = 50.0
 
 @export_category("Movement variables")
 @export_group("Horizontal movement")
-@export_range(100.0, 1000.0) var max_speed: float = 400.0
-@export_range(10.0, 100.0) var acceleration: float = 25.0
-@export_range(0.0, 5.0) var air_acceleration: float = 2.0
+#@export var max_speed: float = 400.0
+@export var movement_force: float = 2500.0
+@export var air_movement_force: float = 500.0
 
-var floor_friction: float = 0.0
-@export var floor_friction_factor: float = 2000.0
+var floor_objects: Array[PhysicsBody2D] = []
+var is_on_floor = false
 
 @export_group("Vertical movement")
-@export_range(100.0, 1000.0) var jump_velocity: float = 600.0
+@export var jump_force: float = 1200.0
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity") # get gravity value from settings
-const DELTA_FACTOR = 100.0
+const STEP_FACTOR = 250.0
 
-func get_floor_friction():
-	var new_floor_fricion = 0.0
-	for i in get_slide_collision_count():
-		var body = get_slide_collision(i).get_collider()
-		if body.physics_material_override:
-			new_floor_fricion = max(body.physics_material_override.friction, new_floor_fricion)
-	floor_friction = new_floor_fricion
+func _ready():
+	movement_force *= mass
+	air_movement_force *= mass
+	jump_force *= mass
 
-func apply_friction(delta):
-	if is_on_floor():
-		var friction = floor_friction * floor_friction_factor * delta
-		if velocity.length() >= friction:
-			velocity.x -= velocity.normalized().x * friction
-		else:
-			velocity.x = 0
+func get_floor(state: PhysicsDirectBodyState2D):
+	floor_objects = []
+	is_on_floor = false
+	for contact_index in state.get_contact_count():
+		var collision_normal = state.get_contact_local_normal(contact_index)
+		var body = state.get_contact_collider_object(contact_index)
+		if collision_normal.dot(Vector2(0, -1)) > 0.6:
+			floor_objects.append(body)
+	if floor_objects.size() > 0:
+		is_on_floor = true
 
-func apply_push_forces():
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var body = collision.get_collider()
-		if body is RigidBody2D:
-			body.apply_central_impulse(-collision.get_normal() * push_force)
+#func apply_push_forces():
+	#for i in get_slide_collision_count():
+		#var collision = get_slide_collision(i)
+		#var body = collision.get_collider()
+		#if body is RigidBody2D:
+			#body.apply_central_impulse(-collision.get_normal() * push_force)
 
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta # Apply the gravity.
-		floor_friction = 0.0
-	else:
-		get_floor_friction()
-
+func _integrate_forces(state: PhysicsDirectBodyState2D):
+	get_floor(state)
+	var step = state.step * STEP_FACTOR
+#
 	if Input.is_action_pressed("Right"):
-		if is_on_floor():
-			velocity.x += acceleration * floor_friction * delta * DELTA_FACTOR
+		if is_on_floor:
+			apply_central_force(Vector2.RIGHT * movement_force * step)
 		else:
-			velocity.x += air_acceleration * delta * DELTA_FACTOR
+			apply_central_force(Vector2.RIGHT * air_movement_force * step)
 		$Sprite.flip_v = false
 	elif Input.is_action_pressed("Left"):
-		if is_on_floor():
-			velocity.x -= acceleration * floor_friction * delta * DELTA_FACTOR
+		if is_on_floor:
+			apply_central_force(Vector2.LEFT * movement_force * step)
 		else:
-			velocity.x -= air_acceleration * delta * DELTA_FACTOR
+			apply_central_force(Vector2.LEFT * air_movement_force * step)
 		$Sprite.flip_v = true
-	else:
-		apply_friction(delta)
-	
-	velocity.x = clamp(velocity.x, -max_speed, max_speed)
+
+	##velocity.x = clamp(velocity.x, -max_speed, max_speed)
 	
 	if Input.is_action_just_pressed("Up"):
-		velocity.y -= jump_velocity
-	
-	move_and_slide()
-	
-	apply_push_forces()
+		apply_central_impulse(Vector2.UP * jump_force)
+		
+	#apply_push_forces()
+	#state.linear_velocity = velocity
+	state.angular_velocity = 0.0 # lock rotation
+	rotation = 0.0
 
 
 func _on_death():

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6fppxvokeban"]
+
+[ext_resource type="Texture2D" uid="uid://cfygcfdtuhe43" path="res://assets/textures/alge.png" id="1_0iu7w"]
+[ext_resource type="Texture2D" uid="uid://chur3lwfj7xos" path="res://assets/lights/radial_light.tres" id="2_kbbfu"]
+
+[node name="Alge" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(3.77995, 3.77995)
+texture = ExtResource("1_0iu7w")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(-2.11643, 0.264554)
+scale = Vector2(0.204728, 0.204728)
+color = Color(0, 1, 0, 1)
+energy = 0.03
+texture = ExtResource("2_kbbfu")
+texture_scale = 2.35
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(-5.02652, -2.64554)
+scale = Vector2(0.204728, 0.204728)
+color = Color(0, 1, 0, 1)
+energy = 0.03
+texture = ExtResource("2_kbbfu")
+texture_scale = 2.35
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+position = Vector2(-2.91009, -6.61384)
+scale = Vector2(0.204728, 0.204728)
+color = Color(0, 1, 0, 1)
+energy = 0.03
+texture = ExtResource("2_kbbfu")
+texture_scale = 2.35
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+position = Vector2(2.91009, -4.49741)
+scale = Vector2(0.204728, 0.204728)
+color = Color(0, 1, 0, 1)
+energy = 0.03
+texture = ExtResource("2_kbbfu")
+texture_scale = 2.35
+
+[node name="PointLight2D10" type="PointLight2D" parent="."]
+position = Vector2(6.08474, -0.529108)
+scale = Vector2(0.204728, 0.204728)
+color = Color(0, 1, 0, 1)
+energy = 0.03
+texture = ExtResource("2_kbbfu")
+texture_scale = 2.35

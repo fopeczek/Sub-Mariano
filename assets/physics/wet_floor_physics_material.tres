@@ -2,4 +2,4 @@
 
 [resource]
 resource_name = "Slippery floor"
-friction = 0.35
+friction = 0.25

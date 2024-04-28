@@ -1,19 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4ulw7tgjircw"]
+[gd_scene load_steps=10 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="1_ug8jt"]
+[ext_resource type="Texture2D" uid="uid://chur3lwfj7xos" path="res://assets/lights/radial_light.tres" id="2_tcie2"]
 [ext_resource type="PackedScene" uid="uid://c0rv3mwwm2yub" path="res://components/health_component.tscn" id="3_oxchr"]
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
-
-[sub_resource type="Gradient" id="Gradient_6omgv"]
-colors = PackedColorArray(0.985904, 0.985904, 0.985904, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q6yft"]
-gradient = SubResource("Gradient_6omgv")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpl3h"]
 radius = 52.0
@@ -26,17 +18,21 @@ size = Vector2(108, 220)
 cull_mode = 2
 polygon = PackedVector2Array(-43, -108, 44, -109, 54, -90, 53, 90, 44, 107, -43, 108, -52, 90, -52, -91)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 7
-floor_stop_on_slope = false
+mass = 20.0
+continuous_cd = 2
+max_contacts_reported = 10
+contact_monitor = true
 script = ExtResource("1_5xp4f")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-scale = Vector2(7.3125, 7.3125)
+energy = 0.39
 shadow_enabled = true
 shadow_filter = 1
-texture = SubResource("GradientTexture2D_q6yft")
+texture = ExtResource("2_tcie2")
+texture_scale = 5.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hpl3h")

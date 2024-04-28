@@ -1,0 +1,5 @@
+[gd_resource type="PhysicsMaterial" format=3 uid="uid://dybb50hlnk2va"]
+
+[resource]
+resource_name = "Player"
+rough = true

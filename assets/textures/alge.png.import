@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckurg7050cdb"
-path="res://.godot/imported/walk8.jpg-ebb7e378c98de1986ea8df7d7c8980ed.ctex"
+uid="uid://cfygcfdtuhe43"
+path="res://.godot/imported/alge.png-e3d275751be9fa7d76fad186d19a018c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/WIP/walk8.jpg"
-dest_files=["res://.godot/imported/walk8.jpg-ebb7e378c98de1986ea8df7d7c8980ed.ctex"]
+source_file="res://assets/textures/alge.png"
+dest_files=["res://.godot/imported/alge.png-e3d275751be9fa7d76fad186d19a018c.ctex"]
 
 [params]
 

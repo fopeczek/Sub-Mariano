@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://epmte2jm0mjj"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dkoi8xexwxbvo" path="res://assets/physics/box_physics_material.tres" id="1_0qjtt"]
-[ext_resource type="Texture2D" uid="uid://iqiq0t5e3lf" path="res://assets/textures/Box.png" id="1_lu3h4"]
+[ext_resource type="Texture2D" uid="uid://iqiq0t5e3lf" path="res://assets/textures/box.png" id="2_3en3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhx5q"]
 size = Vector2(26, 26)
@@ -18,7 +18,7 @@ physics_material_override = ExtResource("1_0qjtt")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(6, 6)
-texture = ExtResource("1_lu3h4")
+texture = ExtResource("2_3en3q")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(6, 6)

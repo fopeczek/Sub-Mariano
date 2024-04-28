@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ow5ufonhua3p"
-path="res://.godot/imported/walk2.jpg-fdd9c3965fca647d63305da77aa75000.ctex"
+uid="uid://cvfcqyvipkjx4"
+path="res://.godot/imported/bubbles.png-7b88cde3ae1ded90b918ea5e65123e47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/WIP/walk2.jpg"
-dest_files=["res://.godot/imported/walk2.jpg-fdd9c3965fca647d63305da77aa75000.ctex"]
+source_file="res://assets/textures/bubbles.png"
+dest_files=["res://.godot/imported/bubbles.png-7b88cde3ae1ded90b918ea5e65123e47.ctex"]
 
 [params]
 

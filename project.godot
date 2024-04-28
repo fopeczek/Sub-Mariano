@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sub-Mariano"
-run/main_scene="res://ui/menus/main_menu.tscn"
+run/main_scene="res://scenes/test_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://assets/textures/icon.png"
 
@@ -56,6 +56,12 @@ Down={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="items"
+
+[physics]
+
+common/physics_ticks_per_second=240
+2d/default_linear_damp=4.0
+2d/default_angular_damp=5.0
 
 [rendering]
 

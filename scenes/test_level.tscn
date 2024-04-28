@@ -1,13 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://3f0if570fqch"]
+[gd_scene load_steps=15 format=3 uid="uid://3f0if570fqch"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://assets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
 [ext_resource type="PackedScene" uid="uid://c4ulw7tgjircw" path="res://entities/player.tscn" id="1_dabbd"]
 [ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://assets/physics/floor_physics_material.tres" id="1_oi23q"]
+[ext_resource type="Texture2D" uid="uid://cfygcfdtuhe43" path="res://assets/textures/alge.png" id="2_flmg8"]
+[ext_resource type="PackedScene" uid="uid://b6fppxvokeban" path="res://entities/alge.tscn" id="2_fyufg"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="2_ogntn"]
 [ext_resource type="PackedScene" uid="uid://epmte2jm0mjj" path="res://entities/box.tscn" id="6_xk82c"]
-
-[sub_resource type="Environment" id="Environment_vwhch"]
-glow_enabled = true
 
 [sub_resource type="GDScript" id="GDScript_t46ws"]
 script/source = "extends StaticBody2D
@@ -66,18 +65,37 @@ fill_to = Vector2(0.5, 0)
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_vwhch")
-
 [node name="Backgound" type="Sprite2D" parent="."]
 modulate = Color(0.294118, 0.294118, 0.294118, 1)
 position = Vector2(1294, 757)
 scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")
 
+[node name="Alge" parent="." instance=ExtResource("2_fyufg")]
+position = Vector2(1205, 971)
+
+[node name="Alge2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1636, 963)
+scale = Vector2(3.77995, 3.77995)
+texture = ExtResource("2_flmg8")
+
+[node name="Alge3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(797, 973)
+scale = Vector2(3.77995, 3.77995)
+texture = ExtResource("2_flmg8")
+
+[node name="Alge4" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(496, 977)
+scale = Vector2(3.77995, 3.77995)
+texture = ExtResource("2_flmg8")
+
 [node name="SlipperyFloor" type="StaticBody2D" parent="."]
 position = Vector2(1946, 1005)
 scale = Vector2(5.81308, 0.361598)
+collision_mask = 7
 physics_material_override = ExtResource("1_67o7e")
 script = SubResource("GDScript_t46ws")
 
@@ -94,6 +112,7 @@ occluder = SubResource("OccluderPolygon2D_kf4uk")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(1175, 1009)
+collision_mask = 7
 physics_material_override = ExtResource("1_oi23q")
 script = SubResource("GDScript_t46ws")
 
@@ -109,15 +128,28 @@ position = Vector2(0, -3)
 occluder = SubResource("OccluderPolygon2D_k6nit")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
-position = Vector2(1555, 634)
-scale = Vector2(16.6374, 16.6374)
+position = Vector2(1538, 517)
 energy = 3.46
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_g38pa")
+texture_scale = 16.0
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(543, 556)
+energy = 3.46
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_g38pa")
+texture_scale = 16.0
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(2103, 478)
+energy = 3.46
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_g38pa")
+texture_scale = 16.0
 
 [node name="Player" parent="." instance=ExtResource("1_dabbd")]
-position = Vector2(1145, 843)
-floor_constant_speed = true
+position = Vector2(1337, 809)
 
 [node name="Box" parent="." instance=ExtResource("6_xk82c")]
-position = Vector2(1345, 404)
+position = Vector2(1086, 798)
