@@ -11,11 +11,15 @@ cull_mode = 2
 polygon = PackedVector2Array(-78, -78, 78, -78, 78, 78, -78, 78)
 
 [node name="Box" type="RigidBody2D"]
+light_mask = 4
+visibility_layer = 4
 collision_layer = 4
 collision_mask = 7
 physics_material_override = ExtResource("1_0qjtt")
 
 [node name="Sprite" type="Sprite2D" parent="."]
+light_mask = 4
+visibility_layer = 4
 texture_filter = 1
 scale = Vector2(6, 6)
 texture = ExtResource("2_3en3q")
@@ -26,3 +30,4 @@ shape = SubResource("RectangleShape2D_qhx5q")
 
 [node name="LightOccluder" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_fdwjw")
+occluder_light_mask = 4

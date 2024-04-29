@@ -56,9 +56,17 @@ Down={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"echo":false,"script":null)
 ]
 }
+Shoot={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
+2d_render/layer_1="world"
+2d_render/layer_2="player"
+2d_render/layer_3="items"
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="items"
@@ -71,6 +79,12 @@ common/physics_ticks_per_second=240
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/screen_space_reflection/roughness_quality=2
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/msaa_2d=3
 viewport/hdr_2d=true
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/screen_space_reflection/roughness_quality=2
+anti_aliasing/main_scene="res://scenes/field_lab.tscn"

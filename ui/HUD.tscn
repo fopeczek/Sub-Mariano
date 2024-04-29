@@ -13,6 +13,7 @@ shader_parameter/shake_color_rate = 0.01
 [node name="HUD" type="CanvasLayer"]
 
 [node name="GlitchOverlay" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_fraj7")
 anchors_preset = 15
 anchor_right = 1.0

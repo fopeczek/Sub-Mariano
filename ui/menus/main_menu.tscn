@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctqc7fu1v3in7"]
+[gd_scene load_steps=5 format=3 uid="uid://ctqc7fu1v3in7"]
 
+[ext_resource type="Shader" path="res://assets/shaders/dot_background.gdshader" id="1_pnvha"]
 [ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://assets/text/title_label.tres" id="1_torgs"]
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="2_it4td"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovdef"]
+shader = ExtResource("1_pnvha")
+shader_parameter/background_color = Color(0, 0, 0, 1)
+shader_parameter/foreground_color = Color(1, 1, 1, 1)
+shader_parameter/grid_size = 70.0
+shader_parameter/dot_size = 0.05
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +18,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ovdef")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
