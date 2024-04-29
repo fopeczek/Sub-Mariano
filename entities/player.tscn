@@ -8,16 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpl3h"]
-radius = 52.0
-height = 216.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoqp"]
 size = Vector2(108, 220)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q4ra4"]
 cull_mode = 2
 polygon = PackedVector2Array(-54, -110, 54, -110, 54, 110, -54, 110)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpl3h"]
+radius = 52.0
+height = 216.0
 
 [node name="Player" type="RigidBody2D"]
 light_mask = 2
@@ -44,9 +44,6 @@ texture_scale = 3.0
 visible = false
 energy = 0.35
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_hpl3h")
-
 [node name="HealthComponent" parent="." instance=ExtResource("3_oxchr")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_r8eah")]
@@ -69,6 +66,9 @@ position = Vector2(0, -1.03083)
 rotation = 1.5708
 scale = Vector2(1.70149, 0.827678)
 texture = ExtResource("1_ug8jt")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hpl3h")
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(0, -114)

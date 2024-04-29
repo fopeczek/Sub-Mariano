@@ -3,31 +3,31 @@
 [ext_resource type="PhysicsMaterial" uid="uid://dkoi8xexwxbvo" path="res://assets/physics/box_physics_material.tres" id="1_0qjtt"]
 [ext_resource type="Texture2D" uid="uid://iqiq0t5e3lf" path="res://assets/textures/box.png" id="2_3en3q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhx5q"]
-size = Vector2(26, 26)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fdwjw"]
 cull_mode = 2
 polygon = PackedVector2Array(-78, -78, 78, -78, 78, 78, -78, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhx5q"]
+size = Vector2(26, 26)
 
 [node name="Box" type="RigidBody2D"]
 light_mask = 4
 visibility_layer = 4
 collision_layer = 4
 collision_mask = 7
+mass = 10.0
 physics_material_override = ExtResource("1_0qjtt")
+
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_fdwjw")
+occluder_light_mask = 4
 
 [node name="Sprite" type="Sprite2D" parent="."]
 light_mask = 4
 visibility_layer = 4
-texture_filter = 1
 scale = Vector2(6, 6)
 texture = ExtResource("2_3en3q")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_qhx5q")
-
-[node name="LightOccluder" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_fdwjw")
-occluder_light_mask = 4

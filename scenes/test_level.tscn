@@ -1,16 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://3f0if570fqch"]
+[gd_scene load_steps=15 format=3 uid="uid://3f0if570fqch"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://assets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
 [ext_resource type="PackedScene" uid="uid://c4ulw7tgjircw" path="res://entities/player.tscn" id="1_dabbd"]
+[ext_resource type="Material" uid="uid://g2ss64nf38rh" path="res://assets/shaders/pixelate.tres" id="1_jf0y3"]
 [ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://assets/physics/floor_physics_material.tres" id="1_oi23q"]
-[ext_resource type="Shader" path="res://assets/shaders/pixelate1.0.gdshader" id="1_v7rmy"]
 [ext_resource type="PackedScene" uid="uid://b6fppxvokeban" path="res://entities/alge.tscn" id="2_fyufg"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="2_ogntn"]
 [ext_resource type="PackedScene" uid="uid://epmte2jm0mjj" path="res://entities/box.tscn" id="6_xk82c"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8e27"]
-shader = ExtResource("1_v7rmy")
-shader_parameter/pixelSize = 2
 
 [sub_resource type="GDScript" id="GDScript_t46ws"]
 script/source = "extends StaticBody2D
@@ -69,24 +65,24 @@ fill_to = Vector2(0.5, 0)
 [node name="TestLevel" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+material = ExtResource("1_jf0y3")
 color = Color(0, 0, 0, 1)
 
-[node name="Backgound" type="Sprite2D" parent="."]
-modulate = Color(0.294118, 0.294118, 0.294118, 1)
-material = SubResource("ShaderMaterial_k8e27")
+[node name="Background" type="Node2D" parent="."]
+modulate = Color(0.525101, 0.525101, 0.525101, 1)
+
+[node name="Backgound" type="Sprite2D" parent="Background"]
 position = Vector2(2283, 466)
 scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")
 
-[node name="Backgound2" type="Sprite2D" parent="."]
-modulate = Color(0.294118, 0.294118, 0.294118, 1)
+[node name="Backgound2" type="Sprite2D" parent="Background"]
 light_mask = 7
 position = Vector2(2541, 981)
 scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")
 
-[node name="Backgound3" type="Sprite2D" parent="."]
-modulate = Color(0.294118, 0.294118, 0.294118, 1)
+[node name="Backgound3" type="Sprite2D" parent="Background"]
 position = Vector2(956, 651)
 scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")
@@ -126,6 +122,7 @@ shape = SubResource("RectangleShape2D_yjv5o")
 occluder = SubResource("OccluderPolygon2D_kf4uk")
 
 [node name="Floor" type="StaticBody2D" parent="."]
+material = ExtResource("1_jf0y3")
 position = Vector2(802, 1007)
 scale = Vector2(15, 0.2)
 collision_mask = 7
@@ -133,6 +130,7 @@ physics_material_override = ExtResource("1_oi23q")
 script = SubResource("GDScript_t46ws")
 
 [node name="Sprite" type="Sprite2D" parent="Floor"]
+use_parent_material = true
 texture = ExtResource("2_ogntn")
 
 [node name="Collision" type="CollisionShape2D" parent="Floor"]
@@ -143,7 +141,6 @@ occluder = SubResource("OccluderPolygon2D_k6nit")
 
 [node name="PointLight" type="PointLight2D" parent="."]
 position = Vector2(522, 595)
-energy = 3.46
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 7
@@ -152,7 +149,6 @@ texture_scale = 4.0
 
 [node name="PointLight2" type="PointLight2D" parent="."]
 position = Vector2(1327, 580)
-energy = 3.46
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 7
@@ -161,7 +157,6 @@ texture_scale = 4.0
 
 [node name="PointLight3" type="PointLight2D" parent="."]
 position = Vector2(2583, 602)
-energy = 3.46
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 7
@@ -169,8 +164,7 @@ texture = SubResource("GradientTexture2D_g38pa")
 texture_scale = 4.0
 
 [node name="PointLight4" type="PointLight2D" parent="."]
-position = Vector2(1880, 539)
-energy = 3.46
+position = Vector2(1971, 527)
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 7
@@ -184,4 +178,4 @@ position = Vector2(1351, 847)
 position = Vector2(1913, 836)
 
 [node name="Box2" parent="." instance=ExtResource("6_xk82c")]
-position = Vector2(1832, 623)
+position = Vector2(1780, 630)

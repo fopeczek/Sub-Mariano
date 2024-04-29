@@ -3,6 +3,5 @@
 [ext_resource type="Texture2D" uid="uid://cfygcfdtuhe43" path="res://assets/textures/alge.png" id="1_0iu7w"]
 
 [node name="Alge" type="Sprite2D"]
-texture_filter = 1
 scale = Vector2(3.77995, 3.77995)
 texture = ExtResource("1_0iu7w")

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://g2ss64nf38rh"]
+
+[ext_resource type="Shader" path="res://assets/shaders/pixelate.gdshader" id="1_gla86"]
+
+[resource]
+resource_name = "Pixelate"
+shader = ExtResource("1_gla86")
+shader_parameter/pixelSize = 4.0
