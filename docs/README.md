@@ -33,10 +33,8 @@ killing them is acceptable.
 5. Starting mission/spawining in game:
    - Starting inside elevator
    - Dropped somewere around randomly form a drop pod (hard to steer? hence randomness of position)
-6. Procedurally generated map based on game year - Before starting capmain you have to chose which year do you want to start the game: early stage, middle stage and late stage.
-   Every stage determines if you have access to advanced or primitive grear, and is there large or small amount of infrastructure, and is there small or large amount of the mineral.
-7. Satnity level - despite your robotic body you still have your human brain, hence killing sentient robots that can be reasoned with is mentally heavy. 
-8. Cool hacking system (TODO)
+6. Satnity level - despite your robotic body you still have your human brain, hence killing sentient robots that can be reasoned with is mentally heavy. 
+7. Cool hacking system (TODO)
 - ### Multiplayer lore:
 The rare mineral was found on other planets as well. Arms race continue, sending sentient robotic excavation groups to those planets. Goals can be the minerals itself but also
 sabotage missions to slow down the competition. 
