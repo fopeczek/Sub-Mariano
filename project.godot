@@ -75,7 +75,7 @@ Shoot={
 [physics]
 
 common/physics_ticks_per_second=240
-2d/default_linear_damp=4.0
+2d/default_linear_damp=2.7
 2d/default_angular_damp=5.0
 
 [rendering]

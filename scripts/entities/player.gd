@@ -5,16 +5,18 @@ extends RigidBody2D
 
 @export_category("Movement variables")
 @export_group("Horizontal movement")
-@export var max_speed: float = 500.0
+@export var max_speed: float = 450.0
 @export var movement_force: float = 1700.0
-@export var air_movement_force: float = 500.0
+@export var air_movement_force: float = 650.0
 
 var floor_friction: float = 0.0
 var is_on_floor = false
 
 @export_group("Vertical movement")
-@export var jump_force: float = 1200.0
+@export var jump_force: float = 1100.0
+@export var jetpack_max_ammo: int = 1
 
+var jetpack_ammo: int
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity") # get gravity value from settings
 const STEP_FACTOR = 250.0
 
@@ -51,6 +53,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 	var step = state.step * STEP_FACTOR
 	var velocity = state.linear_velocity
 #
+	if is_on_floor: jetpack_ammo = jetpack_max_ammo
 	if Input.is_action_pressed("Right"):
 		if velocity.x < max_speed:
 			if is_on_floor:
@@ -71,7 +74,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 		physics_material_override.friction = default_friciton
 	
 	if Input.is_action_just_pressed("Up"):
-		apply_central_impulse(Vector2.UP * jump_force)
+		if is_on_floor: apply_central_impulse(Vector2.UP * jump_force)
+		elif jetpack_ammo: 
+			apply_central_impulse(Vector2.UP * jump_force * 1.7)
+			jetpack_ammo -= 1
 	
 	state.angular_velocity = 0.0 # lock rotation
 	rotation = 0.0
