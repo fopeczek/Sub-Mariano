@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cvl276ulqpsdy"]
+
+[ext_resource type="Shader" path="res://assets/shaders/glitch.gdshader" id="1_5spdn"]
+
+[resource]
+resource_name = "Glitch"
+shader = ExtResource("1_5spdn")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01

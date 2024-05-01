@@ -5,5 +5,8 @@
 [resource]
 resource_name = "Pixelate"
 shader = ExtResource("1_gla86")
+<<<<<<< Updated upstream
+=======
 shader_parameter/size_x = 0.008
 shader_parameter/size_y = 0.008
+>>>>>>> Stashed changes

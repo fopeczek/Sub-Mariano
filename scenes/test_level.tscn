@@ -64,8 +64,7 @@ fill_to = Vector2(0.5, 0)
 
 [node name="TestLevel" type="Node2D"]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-material = ExtResource("1_jf0y3")
+[node name="Darkness" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
 [node name="Background" type="Node2D" parent="."]
@@ -77,7 +76,6 @@ scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")
 
 [node name="Backgound2" type="Sprite2D" parent="Background"]
-light_mask = 7
 position = Vector2(2541, 981)
 scale = Vector2(4.17188, 4.17188)
 texture = ExtResource("2_ogntn")

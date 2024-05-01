@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4ulw7tgjircw"]
+[gd_scene load_steps=12 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
 [ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://assets/physics/player_physics_material.tres" id="1_nqbuf"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="1_ug8jt"]
-[ext_resource type="Texture2D" uid="uid://chur3lwfj7xos" path="res://assets/lights/radial_light.tres" id="2_tcie2"]
 [ext_resource type="PackedScene" uid="uid://c0rv3mwwm2yub" path="res://components/health_component.tscn" id="3_oxchr"]
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
+[ext_resource type="Texture2D" uid="uid://csy51m34yvopp" path="res://assets/lights/flashlight_beam.png" id="7_krq7t"]
+[ext_resource type="Texture2D" uid="uid://p7nxrnll5wai" path="res://assets/textures/flashlight.png" id="8_pf7dj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoqp"]
 size = Vector2(108, 220)
@@ -26,23 +27,11 @@ collision_layer = 2
 collision_mask = 7
 mass = 20.0
 physics_material_override = ExtResource("1_nqbuf")
+lock_rotation = true
 continuous_cd = 2
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_5xp4f")
-
-[node name="HaloLight" type="PointLight2D" parent="."]
-visible = false
-energy = 0.39
-range_item_cull_mask = 3
-shadow_enabled = true
-shadow_filter = 1
-texture = ExtResource("2_tcie2")
-texture_scale = 3.0
-
-[node name="Flashlight" type="PointLight2D" parent="."]
-visible = false
-energy = 0.35
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_oxchr")]
 
@@ -52,7 +41,7 @@ health_component = NodePath("../HealthComponent")
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_juoqp")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
 visible = false
 light_mask = 2
 visibility_layer = 0
@@ -74,5 +63,23 @@ shape = SubResource("CapsuleShape2D_hpl3h")
 position = Vector2(0, -114)
 
 [node name="HUD" parent="Camera" instance=ExtResource("5_3o8d0")]
+
+[node name="Flashlight" type="Node2D" parent="."]
+
+[node name="LightCone" type="PointLight2D" parent="Flashlight"]
+light_mask = 7
+visibility_layer = 2
+position = Vector2(285, 0)
+energy = 2.01
+range_item_cull_mask = 7
+shadow_item_cull_mask = 7
+texture = ExtResource("7_krq7t")
+
+[node name="Sprite" type="Sprite2D" parent="Flashlight"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(91, 0)
+scale = Vector2(0.128205, 0.128205)
+texture = ExtResource("8_pf7dj")
 
 [connection signal="death" from="HealthComponent" to="." method="_on_death"]
