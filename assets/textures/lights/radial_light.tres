@@ -1,0 +1,13 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://chur3lwfj7xos"]
+
+[sub_resource type="Gradient" id="Gradient_6omgv"]
+colors = PackedColorArray(0.985904, 0.985904, 0.985904, 1, 0, 0, 0, 1)
+
+[resource]
+resource_name = "Radial"
+gradient = SubResource("Gradient_6omgv")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)

@@ -1,13 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwfx7ujbb66ck"]
+[gd_scene load_steps=5 format=3 uid="uid://bwfx7ujbb66ck"]
 
-[ext_resource type="Material" uid="uid://hnwodibj6cjo" path="res://assets/shaders/glitch.tres" id="1_6y2q7"]
-[ext_resource type="Material" uid="uid://g2ss64nf38rh" path="res://assets/shaders/pixelate.tres" id="2_7lv5a"]
+[ext_resource type="Shader" path="res://assets/shaders/glitch.gdshader" id="1_okmuv"]
+[ext_resource type="Shader" path="res://assets/shaders/pixelate.gdshader" id="2_x17ut"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j3pij"]
+resource_name = "Glitch"
+shader = ExtResource("1_okmuv")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3ne2"]
+resource_name = "Pixelate"
+shader = ExtResource("2_x17ut")
+shader_parameter/size_x = 0.008
+shader_parameter/size_y = 0.008
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="GlitchOverlay" type="ColorRect" parent="."]
 visible = false
-material = ExtResource("1_6y2q7")
+material = SubResource("ShaderMaterial_j3pij")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,7 +31,7 @@ grow_vertical = 2
 
 [node name="PixelateOverlay" type="ColorRect" parent="."]
 visible = false
-material = ExtResource("2_7lv5a")
+material = SubResource("ShaderMaterial_c3ne2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
