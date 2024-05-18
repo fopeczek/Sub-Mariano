@@ -1,24 +1,29 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4ulw7tgjircw"]
+[gd_scene load_steps=17 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
 [ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://assets/physics/player_physics_material.tres" id="1_nqbuf"]
-[ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="1_ug8jt"]
 [ext_resource type="PackedScene" uid="uid://c0rv3mwwm2yub" path="res://components/health_component.tscn" id="3_oxchr"]
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
-[ext_resource type="Texture2D" uid="uid://csy51m34yvopp" path="res://assets/lights/flashlight_beam.png" id="7_krq7t"]
-[ext_resource type="Texture2D" uid="uid://p7nxrnll5wai" path="res://assets/textures/flashlight.png" id="8_pf7dj"]
+[ext_resource type="Texture2D" uid="uid://dqkgck3yafwdt" path="res://assets/textures/entities/player/head.png" id="7_5eopv"]
+[ext_resource type="Texture2D" uid="uid://csy51m34yvopp" path="res://assets/textures/lights/flashlight_beam.png" id="7_krq7t"]
+[ext_resource type="Texture2D" uid="uid://du3a8vccm4hft" path="res://assets/textures/entities/player/body.png" id="8_a0kco"]
+[ext_resource type="Texture2D" uid="uid://dc2kjbi2bx15" path="res://assets/textures/entities/player/arm 1.png" id="9_18m5i"]
+[ext_resource type="Texture2D" uid="uid://ci73gomm56s8e" path="res://assets/textures/entities/player/arm 2.png" id="10_fwrfb"]
+[ext_resource type="Texture2D" uid="uid://dwi6b3bbsa6lx" path="res://assets/textures/entities/player/leg 1.png" id="11_axddn"]
+[ext_resource type="Texture2D" uid="uid://ch3fe5e83w8ff" path="res://assets/textures/entities/player/leg 2.png" id="12_n1fbx"]
+[ext_resource type="Texture2D" uid="uid://bp5qvcgr8qvf1" path="res://assets/textures/entities/player/leg 3.png" id="13_cq27o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoqp"]
-size = Vector2(108, 220)
+size = Vector2(32, 148)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q4ra4"]
 cull_mode = 2
 polygon = PackedVector2Array(-54, -110, 54, -110, 54, 110, -54, 110)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hpl3h"]
-radius = 52.0
-height = 216.0
+radius = 16.0
+height = 150.0
 
 [node name="Player" type="RigidBody2D"]
 light_mask = 2
@@ -41,30 +46,8 @@ health_component = NodePath("../HealthComponent")
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_juoqp")
 
-[node name="LightOccluder" type="LightOccluder2D" parent="."]
-visible = false
-light_mask = 2
-visibility_layer = 0
-occluder = SubResource("OccluderPolygon2D_q4ra4")
-occluder_light_mask = 2
-
-[node name="Sprite" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(0, -1.03083)
-rotation = 1.5708
-scale = Vector2(1.70149, 0.827678)
-texture = ExtResource("1_ug8jt")
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_hpl3h")
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(0, -114)
-
-[node name="HUD" parent="Camera" instance=ExtResource("5_3o8d0")]
-
 [node name="Flashlight" type="Node2D" parent="."]
+visible = false
 
 [node name="LightCone" type="PointLight2D" parent="Flashlight"]
 light_mask = 7
@@ -80,6 +63,50 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(91, 0)
 scale = Vector2(0.128205, 0.128205)
-texture = ExtResource("8_pf7dj")
+
+[node name="LightOccluder" type="LightOccluder2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 0
+occluder = SubResource("OccluderPolygon2D_q4ra4")
+occluder_light_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hpl3h")
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(0, -114)
+
+[node name="HUD" parent="Camera" instance=ExtResource("5_3o8d0")]
+
+[node name="Head" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -62)
+texture = ExtResource("7_5eopv")
+
+[node name="Body" type="Sprite2D" parent="."]
+position = Vector2(-2, -19)
+texture = ExtResource("8_a0kco")
+
+[node name="Arm1" type="Sprite2D" parent="."]
+position = Vector2(-1, -28)
+texture = ExtResource("9_18m5i")
+
+[node name="Arm2" type="Sprite2D" parent="."]
+position = Vector2(1, 3)
+texture = ExtResource("10_fwrfb")
+
+[node name="Leg1" type="Sprite2D" parent="."]
+position = Vector2(-1, 18)
+texture = ExtResource("11_axddn")
+
+[node name="Leg2" type="Sprite2D" parent="."]
+position = Vector2(1, 48)
+texture = ExtResource("12_n1fbx")
+
+[node name="Leg3" type="Sprite2D" parent="."]
+position = Vector2(3, 68)
+texture = ExtResource("13_cq27o")
 
 [connection signal="death" from="HealthComponent" to="." method="_on_death"]

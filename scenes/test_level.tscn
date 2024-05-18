@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://3f0if570fqch"]
+[gd_scene load_steps=16 format=3 uid="uid://3f0if570fqch"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://assets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
 [ext_resource type="PackedScene" uid="uid://c4ulw7tgjircw" path="res://entities/player.tscn" id="1_dabbd"]
-[ext_resource type="Material" uid="uid://g2ss64nf38rh" path="res://assets/shaders/pixelate.tres" id="1_jf0y3"]
 [ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://assets/physics/floor_physics_material.tres" id="1_oi23q"]
 [ext_resource type="PackedScene" uid="uid://b6fppxvokeban" path="res://entities/alge.tscn" id="2_fyufg"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="2_ogntn"]
+[ext_resource type="Shader" path="res://assets/shaders/pixelate.gdshader" id="4_eux2k"]
 [ext_resource type="PackedScene" uid="uid://epmte2jm0mjj" path="res://entities/box.tscn" id="6_xk82c"]
 
 [sub_resource type="GDScript" id="GDScript_t46ws"]
@@ -43,6 +43,12 @@ size = Vector2(128, 128)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kf4uk"]
 cull_mode = 1
 polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3ne2"]
+resource_name = "Pixelate"
+shader = ExtResource("4_eux2k")
+shader_parameter/size_x = 0.008
+shader_parameter/size_y = 0.008
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nje4o"]
 size = Vector2(128, 128)
@@ -120,7 +126,7 @@ shape = SubResource("RectangleShape2D_yjv5o")
 occluder = SubResource("OccluderPolygon2D_kf4uk")
 
 [node name="Floor" type="StaticBody2D" parent="."]
-material = ExtResource("1_jf0y3")
+material = SubResource("ShaderMaterial_c3ne2")
 position = Vector2(802, 1007)
 scale = Vector2(15, 0.2)
 collision_mask = 7

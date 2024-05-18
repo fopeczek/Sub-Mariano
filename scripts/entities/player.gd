@@ -48,7 +48,6 @@ func manage_movement(step: float):
 				physics_material_override.friction = 0.0
 			else:
 				apply_central_force(Vector2.RIGHT * air_movement_force * step)
-		$Sprite.flip_v = false
 	elif Input.is_action_pressed("Left"):
 		if velocity.x > -max_speed:
 			if is_on_floor:
@@ -56,7 +55,6 @@ func manage_movement(step: float):
 				physics_material_override.friction = 0.0
 			else:
 				apply_central_force(Vector2.LEFT * air_movement_force * step)
-		$Sprite.flip_v = true
 	else:
 		physics_material_override.friction = default_friciton
 

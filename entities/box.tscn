@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://epmte2jm0mjj"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dkoi8xexwxbvo" path="res://assets/physics/box_physics_material.tres" id="1_0qjtt"]
-[ext_resource type="Texture2D" uid="uid://iqiq0t5e3lf" path="res://assets/textures/box.png" id="2_3en3q"]
+[ext_resource type="Texture2D" uid="uid://b80anvk3yluuf" path="res://assets/textures/entities/box.png" id="2_gotew"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_fdwjw"]
 cull_mode = 2
@@ -26,7 +26,7 @@ occluder_light_mask = 4
 light_mask = 4
 visibility_layer = 4
 scale = Vector2(6, 6)
-texture = ExtResource("2_3en3q")
+texture = ExtResource("2_gotew")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(6, 6)
