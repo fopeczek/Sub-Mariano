@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4ulw7tgjircw"]
+[gd_scene load_steps=14 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
 [ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://assets/physics/player_physics_material.tres" id="1_nqbuf"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
 [ext_resource type="Texture2D" uid="uid://csy51m34yvopp" path="res://assets/lights/flashlight_beam.png" id="7_krq7t"]
 [ext_resource type="Texture2D" uid="uid://p7nxrnll5wai" path="res://assets/textures/flashlight.png" id="8_pf7dj"]
+[ext_resource type="Texture2D" uid="uid://tjcvvuyvvukq" path="res://assets/textures/jetpack_bar.png" id="9_ul4it"]
+[ext_resource type="Script" path="res://scripts/jetpack_bar.gd" id="10_qkn7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoqp"]
 size = Vector2(108, 220)
@@ -81,5 +83,17 @@ visibility_layer = 2
 position = Vector2(91, 0)
 scale = Vector2(0.128205, 0.128205)
 texture = ExtResource("8_pf7dj")
+
+[node name="Jetpack bar" type="TextureProgressBar" parent="."]
+offset_left = -74.0
+offset_top = -30.0
+offset_right = -54.0
+offset_bottom = 30.0
+max_value = 3.0
+value = 3.0
+fill_mode = 3
+texture_progress = ExtResource("9_ul4it")
+tint_progress = Color(1, 1, 1, 0.317647)
+script = ExtResource("10_qkn7m")
 
 [connection signal="death" from="HealthComponent" to="." method="_on_death"]

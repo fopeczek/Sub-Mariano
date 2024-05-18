@@ -1,5 +1,9 @@
 extends RigidBody2D
 
+signal grounded
+signal jetpack_used
+signal ungrounded
+
 @export_category("Movement variables")
 @export_group("Horizontal movement")
 @export var max_speed: float = 450.0
@@ -11,7 +15,7 @@ var is_on_floor = false
 
 @export_group("Vertical movement")
 @export var jump_force: float = 1100.0
-@export var jetpack_max_charges: int = 1
+@export var jetpack_max_charges: int = 3
 
 var jetpack_charges: int
 
@@ -64,9 +68,11 @@ func manage_jumping():
 	if Input.is_action_just_pressed("Up"):
 		if is_on_floor: 
 			apply_central_impulse(Vector2.UP * jump_force)
+			ungrounded.emit()
 		elif jetpack_charges > 0: 
 			apply_central_impulse(Vector2.UP * jump_force * 1.7)
 			jetpack_charges -= 1
+			jetpack_used.emit()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	manage_floor_state(state)
@@ -75,6 +81,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 	if is_on_floor: 
 		jetpack_charges = jetpack_max_charges
+		grounded.emit()
 	
 	manage_movement(step)
 	manage_jumping()
