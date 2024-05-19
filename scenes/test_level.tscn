@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://3f0if570fqch"]
 
-[ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://assets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
+[ext_resource type="PhysicsMaterial" uid="uid://ba6t0e13jclth" path="res://presets/physics/wet_floor_physics_material.tres" id="1_67o7e"]
 [ext_resource type="PackedScene" uid="uid://c4ulw7tgjircw" path="res://entities/player.tscn" id="1_dabbd"]
-[ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://assets/physics/floor_physics_material.tres" id="1_oi23q"]
+[ext_resource type="PhysicsMaterial" uid="uid://be1nu4c6niu5g" path="res://presets/physics/floor_physics_material.tres" id="1_oi23q"]
 [ext_resource type="PackedScene" uid="uid://b6fppxvokeban" path="res://entities/alge.tscn" id="2_fyufg"]
 [ext_resource type="Texture2D" uid="uid://bpm1w0rrxxyw4" path="res://assets/textures/icon.svg" id="2_ogntn"]
 [ext_resource type="Shader" path="res://assets/shaders/pixelate.gdshader" id="4_eux2k"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctqc7fu1v3in7"]
 
 [ext_resource type="Shader" path="res://assets/shaders/dot_background.gdshader" id="1_pnvha"]
-[ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://assets/text/title_label.tres" id="1_torgs"]
+[ext_resource type="LabelSettings" uid="uid://doaoc6k7yobd8" path="res://presets/text/title_label.tres" id="1_torgs"]
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="2_it4td"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovdef"]

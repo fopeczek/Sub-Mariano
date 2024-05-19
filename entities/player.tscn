@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
-[ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://assets/physics/player_physics_material.tres" id="1_nqbuf"]
+[ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://presets/physics/player_physics_material.tres" id="1_nqbuf"]
 [ext_resource type="PackedScene" uid="uid://c0rv3mwwm2yub" path="res://components/health_component.tscn" id="3_oxchr"]
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
