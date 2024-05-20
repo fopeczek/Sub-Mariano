@@ -13,21 +13,17 @@ size = Vector2(26, 26)
 [node name="Box" type="RigidBody2D"]
 light_mask = 4
 visibility_layer = 4
-collision_layer = 4
-collision_mask = 7
 mass = 10.0
 physics_material_override = ExtResource("1_0qjtt")
 
 [node name="LightOccluder" type="LightOccluder2D" parent="."]
+scale = Vector2(0.5, 0.5)
 occluder = SubResource("OccluderPolygon2D_fdwjw")
-occluder_light_mask = 4
 
 [node name="Sprite" type="Sprite2D" parent="."]
-light_mask = 4
-visibility_layer = 4
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 texture = ExtResource("2_gotew")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_qhx5q")

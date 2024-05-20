@@ -1,35 +1,27 @@
 extends RigidBody2D
 
-const STEP_FACTOR = 250.0
+const DELTA_FACTOR = 250.0
 
-@export_category("Movement variables")
-@export_group("Horizontal movement")
+@export_category("Movement")
 @export var max_speed: float = 450.0
 @export var movement_force: float = 1700.0
 @export var air_movement_force: float = 250.0
 
+var velocity: Vector2
+
+var default_friciton: float
 var floor_friction: float = 0.0
+
 var is_on_floor = false
 var floor_body
 
-@export_group("Vertical movement")
+@export_category("Jumping")
 @export var jump_force: float = 800.0
-@export var jetpack_max_charges: int = 2
-
-var jetpack_charges: int
-
-var velocity: Vector2
-var default_friciton: float
+@export var jetpack: JetpackComponent
 
 var input = Vector2.ZERO
 
-func _ready():
-	default_friciton = physics_material_override.friction
-	movement_force *= mass
-	air_movement_force *= mass
-	jump_force *= mass
-
-func manage_floor_state(state: PhysicsDirectBodyState2D):
+func update_floor_state(state: PhysicsDirectBodyState2D):
 	floor_friction = 0.0
 	is_on_floor = false
 	for contact_index in state.get_contact_count():
@@ -42,32 +34,35 @@ func manage_floor_state(state: PhysicsDirectBodyState2D):
 			else:
 				floor_friction = PhysicsMaterial.new().friction # default friction
 
-func update_movement():
-	#if abs(linear_velocity.x) < max_speed:
-	if is_on_floor:
-		constant_force = input * movement_force
-		physics_material_override.friction = 0.0
-	else:
-		constant_force = input * air_movement_force
+func update_movement(delta):
+	
+	if abs(linear_velocity.x) < max_speed:
+		if is_on_floor:
+			constant_force = input * movement_force * floor_friction * delta
+			physics_material_override.friction = 0.0
+		else:
+			constant_force = input * air_movement_force
 	
 	if input.x == 0:
 		constant_force = Vector2(0, 0)
 		physics_material_override.friction = default_friciton
 
 func jump():
-	if is_on_floor: 
-		apply_central_impulse(Vector2.UP * jump_force + input * 5000)
-	elif jetpack_charges > 0: 
-		apply_central_impulse(Vector2.UP * jump_force * 1.7 + input * 10000)
-		jetpack_charges -= 1
+	if is_on_floor: #do normal floor jump
+		apply_central_impulse(Vector2.UP * jump_force + input * 500)
+	else: #do jetpack jump if available
+		if jetpack:
+			jetpack.jump(self, input)
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-	manage_floor_state(state)
-	if is_on_floor: 
-		jetpack_charges = jetpack_max_charges
+	update_floor_state(state)
+	if is_on_floor:
+		if jetpack:
+			jetpack.update_charges(jetpack.max_charges)
 
 func _physics_process(delta):
-	update_movement()
+	delta *= DELTA_FACTOR
+	update_movement(delta)
 
 func _input(event):
 	if event.is_action_pressed("Right") or event.is_action_released("Left"):
@@ -81,3 +76,9 @@ func _input(event):
 
 func _on_death():
 	pass # Replace with function body.
+
+func _ready():
+	default_friciton = physics_material_override.friction
+	movement_force *= mass
+	air_movement_force *= mass
+	jump_force *= mass

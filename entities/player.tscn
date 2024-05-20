@@ -1,14 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4ulw7tgjircw"]
+[gd_scene load_steps=20 format=3 uid="uid://c4ulw7tgjircw"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_5xp4f"]
 [ext_resource type="PhysicsMaterial" uid="uid://dybb50hlnk2va" path="res://presets/physics/player_physics_material.tres" id="1_nqbuf"]
 [ext_resource type="PackedScene" uid="uid://c0rv3mwwm2yub" path="res://components/health_component.tscn" id="3_oxchr"]
 [ext_resource type="PackedScene" uid="uid://cltjh4132ks2a" path="res://components/hitbox_component.tscn" id="4_r8eah"]
 [ext_resource type="PackedScene" uid="uid://bwfx7ujbb66ck" path="res://ui/HUD.tscn" id="5_3o8d0"]
-[ext_resource type="Script" path="res://scripts/entities/flashlight.gd" id="5_xq6e3"]
+[ext_resource type="PackedScene" uid="uid://y3m3nmwv3hov" path="res://components/jetpack_component.tscn" id="5_pmdhb"]
+[ext_resource type="PackedScene" uid="uid://brbxolq1jevo0" path="res://components/flashlight_component.tscn" id="6_8ti7h"]
 [ext_resource type="Texture2D" uid="uid://dqkgck3yafwdt" path="res://assets/textures/entities/player/head.png" id="7_5eopv"]
-[ext_resource type="Texture2D" uid="uid://csy51m34yvopp" path="res://assets/textures/lights/flashlight_beam.png" id="7_krq7t"]
-[ext_resource type="Texture2D" uid="uid://dx26qwoakl56h" path="res://assets/textures/entities/flashlight.png" id="7_s8dge"]
 [ext_resource type="Texture2D" uid="uid://du3a8vccm4hft" path="res://assets/textures/entities/player/body.png" id="8_a0kco"]
 [ext_resource type="Texture2D" uid="uid://dc2kjbi2bx15" path="res://assets/textures/entities/player/arm 1.png" id="9_18m5i"]
 [ext_resource type="Texture2D" uid="uid://ci73gomm56s8e" path="res://assets/textures/entities/player/arm 2.png" id="10_fwrfb"]
@@ -19,6 +18,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_juoqp"]
 size = Vector2(32, 148)
 
+[sub_resource type="Gradient" id="Gradient_7nauv"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mlp5l"]
+gradient = SubResource("Gradient_7nauv")
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_q4ra4"]
 cull_mode = 2
 polygon = PackedVector2Array(-54, -110, 54, -110, 54, 110, -54, 110)
@@ -27,11 +32,7 @@ polygon = PackedVector2Array(-54, -110, 54, -110, 54, 110, -54, 110)
 radius = 16.0
 height = 150.0
 
-[node name="Player" type="RigidBody2D"]
-light_mask = 2
-visibility_layer = 2
-collision_layer = 2
-collision_mask = 7
+[node name="Player" type="RigidBody2D" node_paths=PackedStringArray("jetpack")]
 mass = 20.0
 physics_material_override = ExtResource("1_nqbuf")
 lock_rotation = true
@@ -39,6 +40,7 @@ continuous_cd = 2
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_5xp4f")
+jetpack = NodePath("JetpackComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_oxchr")]
 
@@ -48,31 +50,62 @@ health_component = NodePath("../HealthComponent")
 [node name="Hitbox" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_juoqp")
 
-[node name="Flashlight" type="Node2D" parent="."]
-script = ExtResource("5_xq6e3")
+[node name="JetpackComponent" parent="." node_paths=PackedStringArray("UI_charges") instance=ExtResource("5_pmdhb")]
+UI_charges = NodePath("ChargesLeft")
 
-[node name="LightCone" type="PointLight2D" parent="Flashlight"]
-light_mask = 7
-visibility_layer = 2
-position = Vector2(275, 0)
-energy = 2.01
-range_item_cull_mask = 7
-shadow_item_cull_mask = 7
-texture = ExtResource("7_krq7t")
+[node name="ChargesLeft" type="TextureProgressBar" parent="JetpackComponent"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -31.0
+offset_right = 17.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.342972, 0.97837)
+fill_mode = 3
+texture_progress = SubResource("GradientTexture2D_mlp5l")
 
-[node name="Sprite" type="Sprite2D" parent="Flashlight"]
-light_mask = 4
-visibility_layer = 4
-position = Vector2(91, 0)
-scale = Vector2(0.0762564, 0.0762564)
-texture = ExtResource("7_s8dge")
+[node name="FlashlightComponent" parent="." instance=ExtResource("6_8ti7h")]
+
+[node name="DynamicSprites" type="Node2D" parent="."]
+
+[node name="Head" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(0, -62)
+texture = ExtResource("7_5eopv")
+
+[node name="Body" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(-2, -19)
+texture = ExtResource("8_a0kco")
+
+[node name="Arm1" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(-1, -28)
+texture = ExtResource("9_18m5i")
+
+[node name="Arm2" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(1, 3)
+texture = ExtResource("10_fwrfb")
+
+[node name="Leg1" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(-1, 18)
+texture = ExtResource("11_axddn")
+
+[node name="Leg2" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(1, 48)
+texture = ExtResource("12_n1fbx")
+
+[node name="Leg3" type="Sprite2D" parent="DynamicSprites"]
+position = Vector2(3, 68)
+texture = ExtResource("13_cq27o")
 
 [node name="LightOccluder" type="LightOccluder2D" parent="."]
 visible = false
 light_mask = 2
 visibility_layer = 0
 occluder = SubResource("OccluderPolygon2D_q4ra4")
-occluder_light_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hpl3h")
@@ -81,35 +114,5 @@ shape = SubResource("CapsuleShape2D_hpl3h")
 position = Vector2(0, -114)
 
 [node name="HUD" parent="Camera" instance=ExtResource("5_3o8d0")]
-
-[node name="Head" type="Sprite2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(0, -62)
-texture = ExtResource("7_5eopv")
-
-[node name="Body" type="Sprite2D" parent="."]
-position = Vector2(-2, -19)
-texture = ExtResource("8_a0kco")
-
-[node name="Arm1" type="Sprite2D" parent="."]
-position = Vector2(-1, -28)
-texture = ExtResource("9_18m5i")
-
-[node name="Arm2" type="Sprite2D" parent="."]
-position = Vector2(1, 3)
-texture = ExtResource("10_fwrfb")
-
-[node name="Leg1" type="Sprite2D" parent="."]
-position = Vector2(-1, 18)
-texture = ExtResource("11_axddn")
-
-[node name="Leg2" type="Sprite2D" parent="."]
-position = Vector2(1, 48)
-texture = ExtResource("12_n1fbx")
-
-[node name="Leg3" type="Sprite2D" parent="."]
-position = Vector2(3, 68)
-texture = ExtResource("13_cq27o")
 
 [connection signal="death" from="HealthComponent" to="." method="_on_death"]
