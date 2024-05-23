@@ -59,15 +59,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -47.0
-offset_top = -31.0
-offset_right = 17.0
-offset_bottom = 33.0
+offset_left = -32.0
+offset_top = -43.0
+offset_right = 32.0
+offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.342972, 0.97837)
+scale = Vector2(0.25, 0.5)
 fill_mode = 3
 texture_progress = SubResource("GradientTexture2D_mlp5l")
+tint_progress = Color(1, 1, 1, 0.4)
 
 [node name="FlashlightComponent" parent="." instance=ExtResource("6_8ti7h")]
 

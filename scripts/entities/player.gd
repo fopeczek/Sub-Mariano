@@ -8,6 +8,7 @@ const DELTA_FACTOR = 250.0
 @export var air_movement_force: float = 250.0
 
 var velocity: Vector2
+var direction: bool = 1
 
 var default_friciton: float
 var floor_friction: float = 0.0
@@ -46,6 +47,7 @@ func update_movement(delta):
 	if input.x == 0:
 		constant_force = Vector2(0, 0)
 		physics_material_override.friction = default_friciton
+		
 
 func jump():
 	if is_on_floor: #do normal floor jump
@@ -53,12 +55,18 @@ func jump():
 	else: #do jetpack jump if available
 		if jetpack:
 			jetpack.jump(self, input)
+			
+func swap():
+	$DynamicSprites.scale.x *= -1
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	update_floor_state(state)
 	if is_on_floor:
 		if jetpack:
 			jetpack.update_charges(jetpack.max_charges)
+			jetpack.UI_charges.visible = 0
+	else:
+		jetpack.UI_charges.visible = 1
 
 func _physics_process(delta):
 	delta *= DELTA_FACTOR
@@ -67,8 +75,16 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("Right") or event.is_action_released("Left"):
 		input.x+=1
+		if event.is_action_pressed("Right"):
+			if direction != true:
+				swap()
+				direction = true
 	if event.is_action_pressed("Left") or event.is_action_released("Right"):
 		input.x-=1
+		if event.is_action_pressed("Left"):
+			if direction != false:
+				swap()
+				direction = false
 	input = input.normalized()
 	
 	if event.is_action_pressed("Up"):
